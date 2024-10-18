@@ -51,7 +51,10 @@ def monthly_challenge(request, month):
         challenge_text = monthly_challenges[month.lower()]  # Fetch challenge for month
         # response_data = f'<h1>{challenge_text}</h1>'
         # response_data = render_to_string("challenges/challenge.html")
-        response_data = render(request ,"challenges/challenge.html")
+        response_data = render(request ,"challenges/challenge.html",{
+            "text": challenge_text ,
+            "month_name": month
+        })
         return HttpResponse(response_data)
     except:  # Handle invalid months 
         return HttpResponseNotFound("Sorry, this month is not found")
