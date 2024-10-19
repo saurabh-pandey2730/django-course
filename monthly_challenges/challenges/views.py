@@ -24,15 +24,9 @@ def index(request):
     list_items = ''
     months = list(monthly_challenges.keys())
 
-    # Create list of hyperlinks for each month
-    for month in months:
-        capitalized_month = month.capitalize()
-        month_path = reverse("month-challenge", args=[month])  # URL for each month
-        list_items += f'<li><a href="{month_path}">{capitalized_month}</a></li>'
-
-    # Generate and return response with full list of months
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    return render(request,"challenges/index.html",{
+        "months": months,
+    })
 
 # View to handle requests by month number and redirect to the respective month
 def monthly_challenge_by_number(request, month):
