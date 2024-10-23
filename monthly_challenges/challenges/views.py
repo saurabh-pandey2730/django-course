@@ -1,6 +1,5 @@
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from django.template.loader import render_to_string
 from django.shortcuts import render
 
 # Dictionary with months and their challenges
@@ -51,5 +50,4 @@ def monthly_challenge(request, month):
         })
         return HttpResponse(response_data)
     except:  # Handle invalid months 
-        response_data = render_to_string("404.html")
-        return HttpResponseNotFound(response_data)
+         raise Http404("error msg")
