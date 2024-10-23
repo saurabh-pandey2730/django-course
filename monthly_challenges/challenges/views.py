@@ -51,4 +51,5 @@ def monthly_challenge(request, month):
         })
         return HttpResponse(response_data)
     except:  # Handle invalid months 
-        return HttpResponseNotFound("Sorry, this month is not found")
+        response_data = render_to_string("404.html")
+        return HttpResponseNotFound(response_data)
