@@ -1,5 +1,12 @@
 {% extends "base.html" %}
-{% comment %} {% extends "../../../templates/base.html" %} {% endcomment %}
+ {% load static %}
+
+ {% block css_files  %} 
+ 
+ <link rel = "stylesheet" href="{% static "challenges/challenges.css" %}">
+  {% endblock %}
+
+
   {% block page_title  %} challenges{% endblock %}
 
   {% block content  %} 
